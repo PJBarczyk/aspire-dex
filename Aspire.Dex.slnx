@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Aspire.Dex.Demo.AppHost/Aspire.Dex.AppHost.csproj" />
+  <Project Path="Aspire.Dex.Demo.ServiceDefaults/Aspire.Dex.Demo.ServiceDefaults.csproj" />
+  <Project Path="Aspire.Dex.Demo.Web/Aspire.Dex.Demo.Web.csproj" />
+  <Project Path="Aspire.Dex.Hosting/Aspire.Dex.Hosting.csproj" Id="0193a2b1-b74b-4350-b4f4-cffbc6ca174e" />
+</Solution>

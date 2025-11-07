@@ -1,0 +1,43 @@
+﻿@page "/"
+@using System.Security.Principal
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<PageTitle>Home</PageTitle>
+
+@if (Name is not null)
+{
+	<h1>Hello, @Name!</h1>
+}
+else
+{
+	<h1>Hi there!</h1>
+}
+
+@if (Claims.Any())
+{
+	<h3>Your Claims:</h3>
+	<ul>
+		@foreach (var claim in Claims)
+		{
+			<li><strong>@claim.Type:</strong> @claim.Value</li>
+		}
+	</ul>
+}
+else
+{
+	<p>You have no claims.</p>
+}
+
+@code {
+	private string? Name { get; set; }
+	private IEnumerable<Claim> Claims { get; set; } = [];
+
+	protected override async Task OnInitializedAsync()
+	{
+		var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+		Name = state.User.FindFirstValue("name");
+		Claims = state.User.Claims;
+	}
+}
